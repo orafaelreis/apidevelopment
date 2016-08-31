@@ -1,0 +1,126 @@
+<img src="../img/intro-backend-frontend.png" alt="" width="400"/>
+
+<div class="row">
+  <div class="small-9 columns">
+    <table>
+      <th><b>Front end</b></th>
+      <th><b>Back end</b></th>
+      <tbody>
+        <tr>
+          <td>Consumidor de Serviços</td>
+          <td>Provedor de Serviços</td>
+        </tr>
+        <tr>
+          <td>Interação com o usuário final</td>
+          <td>Interação com outros Serviços</td>
+        </tr>
+        <tr>
+          <td>Usabilidade</td>
+          <td>Validação dos Dados</td>
+        </tr>
+        <tr>
+          <td>Regras de Telas</td>
+          <td>Regras de Negócios</td>
+        </tr>
+        <tr>
+          <td>Localização</td>
+          <td>Internacionalização</td>
+        </tr>
+        <tr>
+          <td>Sincronização</td>
+          <td>Persistência</td>
+        </tr>
+        <tr>
+          <td>Visão da Aplicação</td>
+          <td>Visão Global do Sistema</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+<h2>Um pouco de História</h2>
+<!-- https://timeline.knightlab.com/ -->
+
+<p>
+  <b>1996: IFRAME</b><br>
+  Invenção da Microsoft, o elemento IFRAME poderia incorporar uma outra página em sua página,
+  que é uma maneira de trazer em outro servidor de uma forma simplista.
+  Também poderia ser usado para trazer dados de forma assíncrona em uma página do mesmo servidor,
+  semelhante ao que XMLHR tornaria possível mais tarde.
+</p>
+
+<p>
+  <b>1999: XMLHttpRequest</b><br>
+  XMLHttpRequest foi importante ao levar as pessoas a considerar a possibilidade de obtenção dos dados da web
+   a partir de servidores de terceiros.
+</p>
+
+<p>
+  <b>2004/2005: GMail, Google Maps</b><br>
+  A Google explora todo o potencial do XMLHttpRequest e constrói o Gmail e o Google Maps.
+</p>
+
+  <p>
+  <b>Fev 2005: "AJAX"</b><br>
+  Jesse James Garrett cunhou o termo "AJAX" para descrever a abordagem de  buscar dados de forma assíncrona usando XMLHttpReq.
+  </p>
+
+
+  <p>
+  <b>Jun 2005: Google Maps API</b><br>
+  <a href="https://googleblog.blogspot.com.br/2005/06/world-is-your-javascript-enabled_29.html" target="_blank">Google constrói a primeira versão da API do Google Maps
+  </a>
+  </p>
+
+  <p>
+    <b>Dez 2005: "JSONP"</b><br>
+    Devido às políticas de segurança (<a href="https://www.wikiwand.com/en/Same-origin_policy" target="_blank">Same-Origin Policy</a>)
+    dos navegadores não é permitido o consumo/manipulação de dados entre páginas de diferentes domínios.
+    Em Dez. de 2005, Bob Ippolitto descreve em seu blog uma tecnica ("hack") sobre a tag  SCRIPT em que possível, de forma asíncrona
+    trazer dados de outros servidores. Isso ficou conhecido como "JSONP".<br>
+
+    Para a técnica funcionar, o servidor deve entender e processar chamadas JSONP.
+    <br>
+    <div class="docs-code" data-docs-code>
+    <pre>
+      <code class="html">&lt;script type="text/javascript" src="http://api.anotherdomain.com/?q=somequery&callback=minhafuncao"&gt;&lt;/script&gt;</code>
+    </pre>
+    </div>
+
+  </p>
+
+
+<hr>
+  <h2>Consumo de Serviços</h2>
+
+  <div style="background: url(http://developer.marvel.com/i/images/developers/help-bg.jpg) right -5px  no-repeat">
+  Vamos trabalhar o consumo de serviço usando a <a href="http://developer.marvel.com/">API Marvel</a>.
+  Passo-a-passo do que precisaremos fazer:
+
+  <ul>
+    <li>Crie sua conta</li>
+    <li>Registre sua aplicação</li>
+    <li>Veja a documentação (Interactive Documentation)</li>
+    <li>Crie uma tela que liste os personagens</li>
+    <li>Crie uma tela de detalhes que descreva o personagem selecionado</li>
+  </ul>
+
+
+  Conceitos que vamos trabalhar:
+  <ul>
+  <li>endpoint</li>
+  <li>token</li>
+  <li>Http Status Code</li>
+  <li>Chave pública/ Chave Privada</li>
+  <li>Cross Domain</li>
+  <li>Filtragem de dados</li>
+  </ul>
+  </div>
+
+<hr>
+<h2>Curiosidade</h2>
+
+  <p> Diferença entre API, Biblioteca e Framework ?</p>
+  <!-- http://pt.stackoverflow.com/questions/17501/qual-%C3%A9-a-diferen%C3%A7a-de-api-biblioteca-e-framework -->
