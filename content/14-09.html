@@ -81,6 +81,22 @@ os processos de negócios de uma organização</p>
   <p> <b>Atividade:</b> Determinar uma arquitetura para um Processo de Negócio de uma Locadora de Veículos. Pense nos
      serviços, as entidades e os serviços de integração.
   </p>
+  <p> Exemplo: Um exemplo de alguns serviços derivados de
+    um processo de Negócio "Solicitar Serviço de Fornecedor"
+    <pre>
+      <code>
+        Processo Negócio: Solicitar Serviço de Fornecedor
+        ===================================================
+        Processo de Serviço: Buscar Fornecedor
+        - - - - - - - - - - - - - - - - - - - - - - - - - -
+        Processo de Decisão: Fornecedor ativo? Fornecedor Parceiro?
+        - - - - - - - - - - - - - - - - - - - - - - - - - -
+        Serviço de Entidade: CRUD Serviço
+        ===================================================
+        Serviço de Integração: Efetuar Pagamento
+      </code>
+    </pre>
+  </p>
 
   <!--
   http://blog.iprocess.com.br/2012/10/soa-arquitetura-orientada-a-servicos/
