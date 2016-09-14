@@ -1,0 +1,89 @@
+<h2>NodeJS</h2>
+
+<h3>Parte 1</h3>
+<ul>
+<li>1. Acesse o site oficial: <a href="http://nodejs.org" target="_blank">http://nodejs.org</a> e clique em Download</li>
+<li>2. Escolha a opção (TLS) de acordo com sua plataforma</li>
+<li>3. Para verificar a instalação abra o seu terminal de comando e digite o comando: <code>node -v</code></li>
+</ul>
+
+
+<h3>Parte 2</h3>
+<ul>
+  <li>1. Crie um diretório sua aplicação e acesse o diretório via terminal. Ex. <code>cd /Users/me/Documents/myproject/</code></li>
+  <li>2. Vamos criar um <b>package.JSON</b> executando <code>npm init</code></li>
+  <p>Nesse ponto, o NPM vai nos auxiliar em modo wizard para criar um pacote com as funcionalidades básicas de nossa aplicação.<br>
+  Pra cada pergunta, preencha com os seguintes passos</p>
+  <ul>
+    <li>Nome do Pacote: teste</li>
+    <li>versão: 0.0.1</li>
+    <li>descrição: teste</li>
+    <li>ponto de entrada: app.js</li>
+    <li>test command: [pode deixar vazio]</li>
+    <li>git repository: [pode deixar vazio]</li>
+    <li>keywords: [pode deixar vazio]</li>
+    <li>autor: [seu nome]</li>
+    <li>licença: [pode deixar vazio]</li>
+  </ul>
+
+</ul>
+
+<p>Verifique se o arquivo <code>package.json</code> foi criado na raiz do diretório.</p>
+
+<h3>Parte 3</h3>
+
+
+
+<ul>
+  <li> 1. Instalar o pacote Express <code> npm install express --save</code></li>
+</ul>
+
+<img src="../img/installation-nodemonjs.png" alt="" width="600"/>
+
+<ul>
+<li>2. Instalar o pacote Nodemon. Ele vai restartar o processo sempre que houver mudanças de código: <code> npm install nodemon -g</code></li>
+<li>3. Baixe o arquivo <a href="../exemplo/atividade-1-1.zip" target="_blank">app.js</a> e adicione na raiz.</li>
+<li>4. Execute <code>nodemon app.js</code> e espere a resposta abaixo:</li>
+</ul>
+
+<br>
+
+
+<code style="display:block;width:100%"><pre>[nodemon] 1.10.0
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `node app.js`
+Listening on port 3000</pre></code>
+
+<br>
+
+<p>Digite a url no seu browser e espere a seguinte resposta:</p>
+<img src="../img/installation-success.png" alt="" width="500"/><br>
+
+
+<br><p>Conseguiu? <a ng-click="vm.installationSucceded = 1" href="#">Sim!</a><br>
+
+<img ng-show="vm.installationSucceded" src="http://i2.kym-cdn.com/photos/images/newsfeed/000/138/246/tumblr_lltzgnHi5F1qzib3wo1_400.jpg" alt="" width="200" />
+
+</p>
+<!-- <div class="">
+  link nodejs to node:
+  sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+</div> -->
+
+<!-- <h2>Bower</h2>
+<div class="">
+  <div class="">
+    <h3>dependencies</h3>
+    Bower requires node, npm and git.
+  </div>
+  <div class="">
+    npm install -g bower
+  </div>
+  <div class="">
+    bower -version
+    bower install
+    sudo bower install --allow-root
+  </div>
+</div> -->

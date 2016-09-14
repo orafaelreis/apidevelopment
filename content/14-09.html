@@ -1,0 +1,219 @@
+<!--  introducao-a-arquitetura-orientada-a-servicos -->
+<div class="row column">
+
+  <h2>SOA: Arquitetura Orientada a Serviço</h2>
+
+  <h3>O que é uma arquitetura?</h3>
+  <div class="small-9 small-centered definition">
+    <p>
+      A organização fundamental de um sistema incorporado em seus componentes, as relações
+      dos componentes interna e externa e os princípios orientadores da sua concepção e evolução.
+    </p>
+    <div class="author"><b>IEEE (adaptado)</b></div>
+  </div>
+  <div>
+    <img src="../img/soa-apns-architecture.png" alt="" width="500" />
+    <label>Exemplo de Arquitetura para envio de Notificação Remota para o iOS</label>
+  </div>
+
+
+<hr>
+<h3>Beneficios de uma boa arquitetura</h3>
+
+<img ng-src="{{(vm.showSOAimg)? '../img/soa-analogia-2.jpg' : '../img/soa-analogia-1.jpg'}}" alt="" width="500" />
+<label>
+    <a class="button" ng-class="{'active': (vm.showSOAimg)}" href="#" ng-click="vm.showSOAimg = true">Modular</a>
+    <a class="button" ng-class="{'active': (!vm.showSOAimg)}" href="#" ng-click="vm.showSOAimg = false">Monolítico</a>
+</label>
+
+<hr>
+  <h3>Definindo SOA</h3>
+
+  <div class="small-9 small-centered definition">
+    <p>SOA é um estilo arquitetural membro de algo maior (Computação Orientada a Serviço) que tem como foco principal
+os processos de negócios de uma organização</p>
+    <div class="author"><b><a target="_blank" href="http://soa-manifesto.org/">Manifesto SOA</a> (adaptado)</b></div>
+  </div>
+
+
+  <p>
+    <h3>Como Funciona?</h3>
+    <img src="../img/soa-how-it-works.png" alt="" width="600" />
+  </p>
+
+  <br>
+  <div class="column row">
+    <h3>Princípios</h3>
+    <ul>
+      <li>Baixo Acoplamento</li>
+      <li>Sem estado</li>
+      <li>Independência de tecnologia</li>
+      <li>Serviços detectáveis</li>
+    </ul>
+  </div>
+
+
+  <img src="../img/soa-pre-pos.png" alt="Antes e Depois de se aplicar SOA em uma Organização" />
+  <label for="">"Um estudo empírico sobre os benefícios de SOA nas empresas", 2009. FLÁVIO M. G. LAGES</label>
+
+
+  <br>
+  <div class="">
+    <h3>Benefícios</h3>
+    <ul>
+      <li>facilita a integração entre sistemas;</li>
+      <li>minimiza redundâncias de funcionalidades;</li>
+      <li>facilita processos de Data Science e Mineração de Dados;</li>
+      <li>traz maior retorno sobre o investimento (ROI);</li>
+      <li>traz maior agilidade organizacional.</li>
+    </ul>
+  <div>
+
+<hr>
+<div class="">
+  <h3>Arquitetura e Tipos de serviço em SOA</h3>
+
+  <p>
+    <img src="../img/soa-services-types.png" alt="" width="500"/>
+    <label for="">"Applied SOA: service-oriented architecture and design strategies", 2012. ROSEN et al.</label>
+  </p>
+
+  <p> <b>Atividade:</b> Determinar uma arquitetura para um Processo de Negócio de uma Locadora de Veículos. Pense nos
+     serviços, as entidades e os serviços de integração.
+  </p>
+
+  <!--
+  http://blog.iprocess.com.br/2012/10/soa-arquitetura-orientada-a-servicos/
+  http://netcoders.com.br/blog/arquitetura-orientada-a-servicos-soa/
+
+  -->
+
+
+</div>
+
+
+<hr>
+<h2>Webservices</h2>
+
+<p> Tornou-se comum desenvolver SOA utilizando Web Services com os seguintes padrões:<br>
+  <ul>
+    <li><b>XML</b> como a linguagem para troca de informação</li>
+    <li><b>SOAP</b> padrão de troca de mensagens XML</li>
+    <li><b>HTTP</b> como o protocolo responsável pelo envio das mensagens</li>
+    <li><b>WSDL</b> para descrever o serviço</li>
+    <li><b>UDDI</b> para listar os serviços na rede</li>
+  </ul>
+</p>
+
+<!-- WSO ??? http://footballpool.dataaccess.eu/data/info.wso -->
+<h3>EXtensible Markup Language (XML)</h3>
+
+  <p>Realiza a comunicação entre diferentes serviços.</p>
+  <p>exemplo de XML<br>
+    <a target="_blank" href="http://www.w3schools.com/xml/note.xml">http://www.w3schools.com/xml/note.xml</a>
+  </p>
+
+
+<h3>Simple Object Acess Protocol (SOAP)</h3>
+<p>Padrão que define o formato das mensagens distribuidas.</p>
+
+<!-- http://markup.su/highlighter/ with iPlastic-->
+<pre style="background:rgba(238,238,238,0.92);color:#000; font-size: 1.1em; margin-bottom: 1em">
+  <span style="color:#333">&lt;?<span style="font-weight:700">xml</span> <span style="color:#36c;font-style:italic">version</span>=<span style="color:#093">"1.0"</span> <span style="color:#36c;font-style:italic">encoding</span>=<span style="color:#093">"utf-8"</span>?></span>
+  <span style="color:#03c">&lt;<span style="font-weight:700">soap12:Envelope</span> <span style="color:#36c;font-style:italic">xmlns:xsi</span>=<span style="color:#093">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span style="color:#36c;font-style:italic">xmlns:xsd</span>=<span style="color:#093">"http://www.w3.org/2001/XMLSchema"</span>
+  <span style="color:#36c;font-style:italic">xmlns:soap</span>12=<span style="color:#093">"http://www.w3.org/2003/05/soap-envelope"</span>></span>
+  <span style="color:#03c">&lt;<span style="font-weight:700">soap12:Body</span>></span>
+  <span style="color:#03c">&lt;<span style="font-weight:700">FahrenheitToCelsius</span> <span style="color:#36c;font-style:italic">xmlns</span>=<span style="color:#093">"http://www.w3schools.com/xml/"</span>></span>
+  <span style="color:#03c">&lt;<span style="font-weight:700">Fahrenheit</span>></span>77<span style="color:#03c">&lt;/<span style="font-weight:700">Fahrenheit</span>></span>
+  <span style="color:#03c">&lt;/<span style="font-weight:700">FahrenheitToCelsius</span>></span>
+  <span style="color:#03c">&lt;/<span style="font-weight:700">soap12:Body</span>></span>
+  <span style="color:#03c">&lt;/<span style="font-weight:700">soap12:Envelope</span>></span>
+</pre>
+
+<h3>HTTP</h3>
+
+  <p>Protocolo da camada de aplicação que tornou-se o protocolo padrão de transferência de dados na Internet. <br>
+    Vamos trabalhar detalhadamente o protocolo <a href="./?protocolo-http">HTTP</a>.
+  </p>
+
+<h3>Web Services Description Language (WSDL)</h3>
+
+  <p>Descreve o serviço e as interfaces por ele esperadas.</p>
+  <p>Exemplo de WSDL<br>
+    <a target="_blank" href="http://www.w3schools.com/xml/tempconvert.asmx?WSDL">http://www.w3schools.com/xml/tempconvert.asmx?WSDL</a>
+  </p>
+
+<div class="row">
+  <div class="small-12 large-9 columns">
+    <table>
+  <tbody><tr>
+    <th style="width:20%">Elemento</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td>&lt;types&gt;</td>
+    <td>Define os tipos de dadtos (XML Schema) usados pelo web service</td>
+  </tr>
+	<tr>
+    <td>&lt;message&gt;</td>
+    <td>define os elementos de dados p/ cada operação</td>
+  </tr>
+  <tr>
+    <td>&lt;portType&gt;</td>
+    <td>descreve as operações que podem ser realizadas.</td>
+  </tr>
+  <tr>
+    <td>&lt;binding&gt;</td>
+    <td>define o protocolo e o formato de dados para cada tipo de porta</td>
+  </tr>
+</tbody></table>
+  </div>
+</div>
+
+
+  <p>Conversor de WSDL em página Web legível<br>
+    <a target="_blank" href="http://www.wsdl2html.com">http://www.wsdl2html.com</a>
+  </p>
+
+  <p>Extensão para o Chrome que auxilia a extrair a requisição SOAP a partir do WSDL<br>
+    <a target="_blank" href="https://chrome.google.com/webstore/detail/wizdler/oebpmncolmhiapingjaagmapififiakb">Wizdler</a>
+  </p>
+
+  <p>Geração de código para o cliente a partir do WSDL<br>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/DXU4ZwvfhS0?rel=0" frameborder="0" allowfullscreen></iframe>
+  </p>
+
+
+<h3>Universal Description, Discovery and Integration (UDDI)</h3>
+<p>
+  Utilizado como um diretório de serviços para descobrir e gerenciar os serviços implementados na rede.<br>
+</p>
+
+
+<p>
+  <img src="../img/soa-uddi.gif" alt="" width="500" />
+</p>
+
+
+<h3>Críticas sobre Webservices WSDL+SOAP+UDDI</h3>
+<ul>
+  <li>Complexidade</li>
+  <li>Overhead na transferência de dados</li>
+  <li>Dependencia de grandes fornecedores de software ou integradores (IBM, Microsoft, Oracle)</li>
+</ul>
+
+
+<h2>Leituras Recomendadas</h2>
+
+<ul>
+  <li><a target="_blank" href="https://www.infoq.com/news/2007/01/wsdl-2-importance">Does WSDL 2.0 Matter?</a></li>
+  <li><a target="_blank" href="https://www.infoq.com/articles/RESTSOAFuture">is Rest the Future of SOA?</a></li>
+  <li>Applied SOA: service-oriented architecture and design strategies", 2012. ROSEN et al</li>
+</ul>
+
+
+
+
+
+</div>

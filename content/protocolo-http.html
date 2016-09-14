@@ -1,0 +1,252 @@
+<h2>Hypertext Transfer Protocol (HTTP) </h2>
+<p>
+  Protocolo da camada de aplicação para a comunicação entre sistemas distribuídos.
+  Base da web moderna e fundamental para integrações entre as aplicações cliente/servidor.
+</p>
+
+<p><strong>Stateless:</strong> assume pouca informação sobre um sistema particular, e não mantem o estado entre as diferentes trocas de mensagens.</p>
+<p>A versão mais utilizada atualmente é a <strong>HTTP/1.1</strong></p>
+
+<figure><img alt="" src="https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-request-response.png"></figure>
+
+<strong>Request/Response</strong>
+<p>Comunicação entre um cliente e servidor: o cliente inicia uma mensagem de solicitação HTTP, que é servida através de uma mensagem de resposta HTTP em troca.</p>
+
+
+
+<h3>URLs</h3>
+
+<figure> <img alt = "" src = "https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-url-structure.png"> </figure>
+<p>O protocolo é tipicamente <code>http</code>, mas também pode ser <code>https</code> para comunicações seguras. A porta padrão é <code>80</code>, mas pode ser definida explicitamente, como ilustrado na imagem acima. O caminho do recurso é o <em> caminho local </em> para o recurso no servidor. </p>
+
+<h3> Verbos </h3>
+
+<p>URLs revelam a identidade da máquina particular com o qual queremos comunicar, mas a ação que deve ser realizada no host é
+  especificado por meio de verbos HTTP.</p>
+
+<p>Verbos mais utilizados: </p>
+<ul>
+<li>
+<strong> GET </strong>: <em> buscar </em> um recurso existente.</li>
+<li>
+<strong> POST </strong>: <em> criar </em> um novo recurso.</li>
+<li>
+<strong> PUT </strong>: <em> atualizar </em> um recurso existente.</li>
+<li>
+<strong> DELETE </strong>: <em> excluir </em> um recurso existente.</li>
+</ul>
+
+<p><code>PUT</code> e <code>DELETE</code>, muitas vezes, são enviados como <code>POST</code> com
+  informações extras contendo a ação desejada: <em> criar </em>, <em> atualização </em> ou <em> excluir </em></p>
+
+<p>Verbos menos utilizados: </p>
+<ul>
+<li>
+<strong> HEAD </strong>: semelhante ao GET, mas sem o corpo da mensagem. Usado para recuperar os cabeçalhos do servidor para um determinado recurso, geralmente para verificar se o recurso foi alterado, através de marcas de tempo. </li>
+<li>
+<strong> TRACE </strong>: utilizado para recuperar os saltos que um pedido leva para ida e volta a partir do servidor. Cada proxy intermediário ou gateway injetaria seu nome IP ou DNS para
+o campo <code>Via</code> do cabeçalho. Utilizado para fins de diagnóstico. </li>
+<li>
+<strong> OPTIONS </strong>: utilizado para recuperar os recursos de servidor. No lado do cliente, pode ser usado para modificar o pedido com base no que
+o servidor pode suportar. Recentemente usado na técnica de <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a></li>
+</ul>
+
+<h3> Códigos de Status </h3>
+<p>Dizem ao cliente como interpretar a resposta do servidor. A especificação HTTP define os seguintes tipos de respostas: </p>
+
+<h4> 1xx: Informativas </h4>
+<p> Útil para quem lida com a transferência dos dados como proxies, por exemplo.</p>
+
+<h4> 2xx: Sucesso </h4>
+<p>Diz ao cliente que o pedido foi processado com êxito. O código mais comum é <strong> 200</strong>.
+  Outros códigos utilizados com menor frequência: </p>
+<ul>
+<li>
+<strong> 202 </strong> Accepted: o pedido foi aceito, mas não pode incluir o recurso na resposta. Isto é útil para o processamento assíncrono no lado do servidor. O servidor pode optar por enviar informações para o acompanhamento. </li>
+<li>
+<strong> 204 </strong> No Content: Não há nenhum corpo da mensagem na resposta </​​li>
+<li>
+<strong> 205 </strong> Reset Content: indica para o cliente para redefinir a sua visão do documento </li>.
+<li>
+<strong> 206 </strong> Partial Content: indica que a resposta contém apenas conteúdo parcial. cabeçalhos adicionais indicar a faixa exata e
+informações de expiração de conteúdo. </li>
+</ul>
+
+<h4> 3xx: redirecionamento </h4>
+
+<p>Requer medidas adicionais do cliente. O caso de uso mais comum é para saltar para um URL diferente, a fim de buscar o recurso. </p>
+<ul>
+<li>
+<strong> 301 </strong> Moved Permanently: o recurso está agora localizado em uma nova URL. </li>
+<li>
+<strong> 303 </strong> See Other: o recurso está temporariamente localizado a uma nova URL. O cabeçalho <code>Location</code> de resposta
+contém a URL temporária. </li>
+<li>
+<strong> 304 </strong> Not Modified: o servidor determinou que o recurso não mudou e que o cliente deve usar a sua cópia em cache. Esta baseia-se no fato de que o cliente está enviando <code>ETag</code> (Enttity Tag) informação que é um hash do conteúdo. O servidor compara isso com seu próprio <code>computadorizada ETag</code> para verificar se há modificações. </li>
+</ul>
+
+<h4> 4xx: Erro de cliente </h4>
+<p>Estes códigos são usados ​​quando o servidor pensa que o cliente é a culpa, seja solicitando um recurso inválido ou fazer uma má pedido. O código mais popular nesta classe é <strong> 404 Not Found </strong>, que eu acho que todo mundo vai se identificar. 404 indica que o recurso é inválido e não existe no servidor. Os outros códigos nesta classe incluem: </p>
+<ul>
+<li>
+<strong> 400 </strong> Bad Request: O pedido não foi entendido (erro de sintaxe).</li>
+<li>
+<strong> 401 </strong> Unauthorized: pedido requer autenticação.</li>
+<li>
+<strong> 403 </strong> Forbidden: servidor negou o acesso ao recurso </li>
+<li><strong> 404 </strong> indica que o recurso é inválido e não existe no servidor.</li>
+<li>
+<strong> 405 </strong> Method Not Allowed: Verbo HTTP inválido utilizado na linha de requisição, ou o servidor não suporta esse verbo </li>
+<li>
+<strong> 409 </strong> Conflict: o servidor não pôde concluir a solicitação porque o cliente está tentando modificar um recurso que é mais recente do que o timestamp do cliente. Conflitos surgem principalmente para solicitações PUT durante as edições de colaboração sobre um recurso. </li>
+</ul>
+
+<h4> 5xx: Erro de servidor </h4>
+<p>Esta classe de códigos são usados ​​para indicar uma falha no servidor ao processar o pedido. O código de erro mais comumente utilizado é <strong> 500 Internal Server Error </strong>. Os outros nesta classe são: </p>
+<ul>
+<li>
+<strong> 501 Not Implemented </strong>: O servidor ainda não suporta a funcionalidade solicitada </li>
+<li>
+<strong> 503 Service Unavailable </strong>: isso poderia acontecer se um sistema interno no servidor falhou ou o servidor está sobrecarregado. Normalmente, o servidor não vai mesmo responder ea solicitação será tempo limite. </li>
+</ul>
+
+<h3>Mensagens</h3>
+
+<figure> <img alt = "" src = "https://cdn.tutsplus.com/net/authors/jeremymcpeak/http1-req-res-details.png"> </figure>
+
+<p>A mensagem pode conter um ou mais cabeçalhos</p>
+
+<h4> Cabeçalhos Gerais  </h4>
+<!-- <p>Compartilhados por ambas as partes (cliente e servidor): </p> -->
+<pre> general-header = Cache-Control
+                 | Connection
+                 | Date
+                 | Pragma
+                 | Trailer
+                 | Transfer-Encoding
+                 | Upgrade
+                 | Via
+                 | Warning </pre>
+
+<!-- O código de status é importante e diz ao cliente como interpretar a resposta do servidor. -->
+<ul>
+<li><code>Cache-Control </code>: relativo a mecanismos de cacheamento de dados.</li>
+<li><code>Date</code>: indica o timestamp da mensagem </li>
+<li>
+<code>Upgrade</code>: usado para mudar os protocolos e permitir uma transição suave para um protocolo mais recente. </li>
+<li>
+<code>Transfer-Encoding</code>: geralmente usado para quebrar a resposta em partes menores, em vez de enviar uma grande carga de dados de uma vez só. </li>
+</ul>
+
+<h4> Cabeçalhos de entidade </h4>
+<p>mensagens de solicitação e resposta também podem incluir cabeçalhos de entidade para fornecer metadados sobre o conteúdo: </p>
+<pre> entity-header = Allow
+               | Content-Encoding
+               | Content-Language
+               | Content-Length
+               | Content-Location
+               | Content-MD5
+               | Content-Range
+               | Content-Type
+               | Expires
+               | Last-Modified </pre>
+
+<ul>
+  <li><code>Content - </code>: fornecem informações sobre a própria entidade.</li>
+  <li><code>Expires</code>: indica um timestamp de quanto a entidade expira.</li>
+  <li><code>Last-Modified</code> cabeçalho indica o último horário de modificação para a entidade.</li>
+
+</ul>
+
+<!-- <blockquote> <p>cabeçalhos personalizados também podem ser criados e enviados pelo cliente; eles serão tratados como cabeçalhos de
+ entidade pelo protocolo HTTP. </p> </blockquote> -->
+<!-- <p>Este é realmente um mecanismo de extensão, e algumas implementações cliente-servidor pode optar por comunicar especificamente
+  sobre estes cabeçalhos de extensão. Embora HTTP suporta cabeçalhos personalizados, o que realmente olha para são os cabeçalhos de
+   solicitação e resposta, que cobrimos seguinte. </p> -->
+
+<h3> Formato de Requisições </h3>
+
+<p>Uma mensagem de requisição comum: </p>
+<pre><code style="display:block; width:100%">GET /articles/http-basics HTTP/1.1
+Host: www.articles.com
+Connection: keep-alive
+Cache-Control: no-cache
+Pragma: no-cache
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 </code></pre>
+
+<br>
+<p>Os cabeçalhos de solicitação atuam como modificadores da requisição. A lista completa de cabeçalhos de solicitação conhecidos é fornecido abaixo.</p>
+<pre> request-header = Accept
+               | Accept-Charset
+               | Accept-Encoding
+               | Accept-Language
+               | Authorization
+               | Expect
+               | From
+               | Host
+               | If-Match
+               | If-Modified-Since
+               | If-None-Match
+               | If-Range
+               | If-Unmodified-Since
+               | Max-Forwards
+               | Proxy-Authorization
+               | Range
+               | Referer
+               | TE
+               | User-Agent </pre>
+
+<ul>
+  <li><code>Accept - </code>: indicam os ​​tipos de mídia, idiomas e codificações no cliente.</li>
+  <li>
+    <code>From</code>,<code>host</code>,<code>Referer</code> e <code>User Agent</code> identificam detalhes sobre o cliente.
+  </li>
+  <li>
+    <code>If - </code>
+     são usados ​​para fazer um pedido mais condicional, e o servidor retorna o recurso apenas se a condição for verdadeira.
+     Caso contrário, ele retorna o status <b>304 Not Modified</b>. A condição pode ser baseado em um
+      timestamp ou um ETag (hash da entidade).
+  </li>
+</ul>
+
+
+<h3> Formato de Respostas </h3>
+
+<p>Cabeçalhos de resposta: </p>
+<pre> response-header = Accept-Ranges
+                 | Age
+                 | ETag
+                 | Location
+                 | Proxy-Authenticate
+                 | Retry-After
+                 | Server
+                 | Vary
+                 | WWW-Authenticate</pre>
+<ul>
+<li>
+<code>Age</code>: tempo em segundos desde que a mensagem foi gerada no servidor. </li>
+<li>
+<code>ETag</code>: hash MD5 da entidade e usado para verificar se há modificações. </li>
+<li>
+<code>Location</code>: usado para redirecionamentos; contém a nova URL do recurso. </li>
+<li>
+<code>Server</code>: identifica o servidor que gera a mensagem. </li>
+</ul>
+
+<hr>
+
+<h2> Ferramentas para exibir o tráfego HTTP </h2>
+
+<p><a target="_blank" href="https://developers.google.com/chrome-developer-tools/"> Chrome inspector / Webkit </a> </strong> são favoritos entre os desenvolvedores web: </p>
+<figure> <img alt = "" src = "../img/http-chrome-network-panel.png" width="500"> </figure>
+
+<p>Para a linha de comando existe a biblioteca popular <a target="_blank" href="http://curl.haxx.se/" > curl </a></p>
+<figure> <img alt = "" src = "../img/http-curl.png" width="500"> </figure>
+
+
+
+<h2>Leituras Recomendadas</h2>
+
+<ul>
+  <li><a target="_blank" href="https://www.w3.org/Protocols/">HTTP - Hypertext Transfer Protocol, W3C</a></li>
+</ul>
