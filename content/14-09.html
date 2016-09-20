@@ -1,4 +1,11 @@
 <!--  introducao-a-arquitetura-orientada-a-servicos -->
+<nav id="submenu">
+  <ul>
+    <li>SOA</li>
+    <li><a href="./?protocolo-http">HTTP</a></li>
+  </ul>
+</nav>
+
 <div class="row column">
 
   <h2>SOA: Arquitetura Orientada a Serviço</h2>
@@ -83,19 +90,15 @@ os processos de negócios de uma organização</p>
   </p>
   <p> Exemplo: Um exemplo de alguns serviços derivados de
     um processo de Negócio "Solicitar Serviço de Fornecedor"
-    <pre>
-      <code>
-        Processo Negócio: Solicitar Serviço de Fornecedor
-        ===================================================
-        Processo de Serviço: Buscar Fornecedor
-        - - - - - - - - - - - - - - - - - - - - - - - - - -
-        Processo de Decisão: Fornecedor ativo? Fornecedor Parceiro?
-        - - - - - - - - - - - - - - - - - - - - - - - - - -
-        Serviço de Entidade: CRUD Serviço
-        ===================================================
-        Serviço de Integração: Efetuar Pagamento
-      </code>
-    </pre>
+      <pre><code>Processo Negócio: Solicitar Serviço de Fornecedor
+====================================================================
+Serviço do Processo: Buscar Fornecedor, Agendar Serviço
+- - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - -
+Serviço de Decisão: Fornecedor Ativo? Fornecedor Parceiro?
+- - - - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - -
+Serviço de Entidade: CRUD Fornecedor, CRUD Serviço
+====================================================================
+Serviço de Integração: Efetuar Pagamento</code></pre>
   </p>
 
   <!--
@@ -193,11 +196,11 @@ os processos de negócios de uma organização</p>
   </p>
 
   <p>Extensão para o Chrome que auxilia a extrair a requisição SOAP a partir do WSDL<br>
-    <a target="_blank" href="https://chrome.google.com/webstore/detail/wizdler/oebpmncolmhiapingjaagmapififiakb">Wizdler</a>
+    <a target="_blank" href="//chrome.google.com/webstore/detail/wizdler/oebpmncolmhiapingjaagmapififiakb">Wizdler</a>
   </p>
 
   <p>Geração de código para o cliente a partir do WSDL<br>
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/DXU4ZwvfhS0?rel=0" frameborder="0" allowfullscreen></iframe>
+     <iframe width="560" height="315" src="//www.youtube.com/embed/DXU4ZwvfhS0?rel=0" frameborder="0" allowfullscreen></iframe>
   </p>
 
 
@@ -223,8 +226,8 @@ os processos de negócios de uma organização</p>
 <h2>Leituras Recomendadas</h2>
 
 <ul>
-  <li><a target="_blank" href="https://www.infoq.com/news/2007/01/wsdl-2-importance">Does WSDL 2.0 Matter?</a></li>
-  <li><a target="_blank" href="https://www.infoq.com/articles/RESTSOAFuture">is Rest the Future of SOA?</a></li>
+  <li><a target="_blank" href="//www.infoq.com/news/2007/01/wsdl-2-importance">Does WSDL 2.0 Matter?</a></li>
+  <li><a target="_blank" href="//www.infoq.com/articles/RESTSOAFuture">is Rest the Future of SOA?</a></li>
   <li>Applied SOA: service-oriented architecture and design strategies", 2012. ROSEN et al</li>
 </ul>
 

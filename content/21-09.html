@@ -1,0 +1,210 @@
+<!--  introducao-a-arquitetura-orientada-a-servicos -->
+<div class="row column">
+
+    <h2>NodeJS</h2>
+
+    <p><a href="./?installations">Instalação do NodeJS</a></p>
+    <p><a target="_blank" href="https://nodejs.org/en/about/">NodeJS</a>?
+      <a target="_blank" href="https://www.npmjs.com/about">NPM</a>?
+      <a target="_blank" href="http://expressjs.com/pt-br/">Express</a>?
+    </p>
+
+
+    <h2>REST</h2>
+    <ul>
+        <li>Recursos</li>
+        <li>Cada recurso é identificado por sua URI</li>
+        <li>Uso dos métodos do HTTP</li>
+        <li>Recursos podem ter múltiplas representações</li>
+        <li>Stateless</li>
+    </ul>
+
+
+    <hr>
+    <h3>URI</h3>
+    <p class="mark">Todo recurso deve ter uma URL única de acesso</p>
+    <p> Uma API desenhada para um sistema de livraria tem, por exemplo: <br><br>
+
+          <img src="../img/rest-resources.png" alt="" style="max-width:500px" />
+
+    </p>
+    <p class="mark">
+      A URI deve ser capaz de referenciar o recurso de forma exata
+      a qualquer momento no tempo.
+    </p>
+    <p>Exemplo:<br><br>
+
+      GET /api/v1/books/a-guerra-dos-tronos/last
+    </p>
+    <p>
+      Considere:<br>
+      GET /api/v1/books/g-r-r-martin/a-guerra-dos-tronos-as-cronicas-de-gelo-e-fogo<br>
+      GET /api/v1/books/g-r-r-martin/a-guerra-dos-tronos-a-furia-dos-reis
+    </p>
+
+    <p class="mark">É interessante fornecer uma URL amigável.</p>
+    <p>Uso de <b>slug codes</b>. Ex.: <br> /uf/12 <br> /uf/minas-gerais <br><br> /personalidade/1 <br> /personalidade/machado-de-assis
+
+    </p>
+
+    <hr>
+    <h3>Múltiplas Representações</h3>
+
+    <div style="max-width:500px">
+
+        <pre class="request"><code>POST /data/documents/balance HTTP/1.1
+Content-Type: text/xml
+Host: www.mydatastore.com
+
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;balance date=&quot;22082014&quot;&gt;
+&lt;item&gt;Sample item&lt;/item&gt;
+   &lt;price currency=&quot;EUR&quot;&gt;100&lt;/price&gt;
+&lt;/balance&gt;</code></pre>
+
+        <div>Request &gt;&gt;&gt;&gt;</div>
+        <br>
+        <div style="text-align:right">&lt;&lt;&lt;&lt; Response</div>
+
+        <pre class="response"><code>HTTP/1.1 201 Created
+Content-Type: text/xml
+Location: /data/documents/balance</code></pre>
+        <br>
+    </div>
+
+
+
+    <div style="clear:both;max-width:500px">
+
+        <br>
+        <br>
+
+        <pre class="request"><code>POST /data/documents/balance HTTP/1.1
+Content-Type: text/xml
+Host: www.mydatastore.com
+
+{
+  "balance": {
+    "date": ""22082014"",
+    "Item": "Sample item",
+    "price": {
+        "currency": "EUR",
+         "value": "100"
+       }
+} }</code></pre>
+
+        <div>Request &gt;&gt;&gt;&gt;</div>
+        <br>
+        <div style="text-align:right">&lt;&lt;&lt;&lt; Response</div>
+
+        <pre class="response"><code>HTTP/1.1 201 Created
+Content-Type: text/xml
+Location: /data/documents/balance</code></pre>
+        <br>
+    </div>
+
+
+    <hr>
+    <h2>Confiabilidade</h2>
+
+    <!-- POST/PUT e DELETE alteram a entidade fazendo com que a
+  propriedade "etag" seja modificada -->
+    <div class="row">
+        <div class="small-9 columns">
+            <table>
+                <thead>
+                    <th>HTTP Method</th>
+                    <th>Safe</th>
+                    <th>Idempotent</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            GET
+                        </td>
+                        <td>
+                            Yes
+                        </td>
+                        <td>
+                            Yes
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            POST
+                        </td>
+                        <td>
+                            No
+                        </td>
+                        <td>
+                            No
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            PUT
+                        </td>
+                        <td>
+                            No
+                        </td>
+                        <td>
+                            Yes
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            DELETE
+                        </td>
+                        <td>
+                            No
+                        </td>
+                        <td>
+                            Yes
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+    <h2>HATEOAS</h2>
+
+    <p>Hypermedia as the Engine of Application State</p>
+    <p>
+<blockquote cite="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">
+“A REST API should be entered with no prior knowledge beyond the initial URI… From that point on, all application state transitions must be driven by client selection of server-provided choice… “
+</blockquote>
+    </p>
+
+    <p>
+      <pre><code>{
+  "metadata": {
+    "links": [
+      "books": {
+        "uri": "/books",
+        "content-type": "application/json"
+      },
+      "authors": {
+        "uri": "/authors",
+        "content-type": "application/json"
+      }
+] }
+}</code></pre>
+    </p>
+
+    <hr>
+    <h2>Erros Comuns</h2>
+
+    <p><img src="../img/rest-errors-1.png" alt="" /></p>
+    <p><img src="../img/rest-errors-2.png" alt="" /></p>
+    <p><img src="../img/rest-errors-3.png" alt="" /></p>
+    <p>Fonte: <a href="http://pt.slideshare.net/evandrovenancio35/hateoas-arquitetura-rest-100-aderente" target="_blank">Hateos Arquitetura Rest 100% Aderente</a></p>
+
+    <hr>
+    <h2>Leituras Recomendadas</h2>
+    <ul>
+        <li><a target="_blank" href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">Representational State Transfer (REST), Chapter 5. Roy Thomas Fielding, 2000</a></li>
+        <li><a target="_blank" href="http://stackoverflow.com/questions/20335967/how-useful-important-is-rest-hateoas-maturity-level-3">How useful/important is REST HATEOAS ( maturity level 3)?</a></li>
+    </ul>
+</div>

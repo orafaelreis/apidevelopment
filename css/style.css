@@ -18,6 +18,11 @@ h4{font-size:1.1em}
 
 h1,h2,h3,h4{color:#4365A9}
 
+.mark{
+border-left: 3px solid #19C;
+padding-left: 0.5em;
+}
+
 .inset{
   padding: 25px;
 }
@@ -28,6 +33,20 @@ h1,h2,h3,h4{color:#4365A9}
 
 .txt-center{
   text-align: center;
+}
+
+pre > code{
+   display:block;
+   border:none;
+}
+
+pre.request{
+  max-width: 500px
+}
+
+pre.response{
+  max-width: 500px;
+  float: right;
 }
 
 .definition{
@@ -62,6 +81,10 @@ h1,h2,h3,h4{color:#4365A9}
 
 #main_menu li a{font-size: 1.2em;}/*li a:hover*/
 #main_menu {margin: 0; padding: 0;}
+
+#submenu ul{padding-bottom: .5em;margin: 0 0 1em 0;border-bottom: 1px solid #ccc}
+#submenu ul li{display: inline;margin-left:1em;}
+#submenu ul li a{font-size: 0.9em;}
 
 a.active{ background-color: #2199e8; color: white}
 .page{

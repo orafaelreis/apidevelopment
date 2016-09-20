@@ -1,3 +1,10 @@
+<nav id="submenu">
+  <ul>
+    <li><a href="./?14-09">SOA</a></li>
+    <li>HTTP</li>
+  </ul>
+</nav>
+
 <h2>Hypertext Transfer Protocol (HTTP) </h2>
 <p>
   Protocolo da camada de aplicação para a comunicação entre sistemas distribuídos.
@@ -208,6 +215,16 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 </code><
       timestamp ou um ETag (hash da entidade).
   </li>
 </ul>
+
+<p> <b>Exemplo de uso do </b><code>Accept-Encoding</code><br>
+  Observe o <code>Content-length</code> da resposta
+  para as duas requisições abaixo:
+  <pre><code>GET http://www.google.com.br
+Accept- Encoding: gzip;q=0</code></pre>
+  <br>
+  <pre><code>GET http://www.google.com.br
+Accept-Encoding: gzip;q=1</code></pre>
+</p>
 
 
 <h3> Formato de Respostas </h3>
