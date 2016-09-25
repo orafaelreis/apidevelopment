@@ -47,12 +47,154 @@ Entidades e atributos que podem estar presentes na API:
 </ul>
 </p>
 
+
+<p>O que deverá ser entregue no arquivo Zip:</p>
+<ul>
+  <li>Coleção dos endpoints (via Postman Collection)</li>
+  <li>Projeto NodeJs</li>
+</ul>
+
+
+<p>Metodologia da Avaliação:<br>
+  <b>Funcional:</b><br>
+  - Coleção dos enpoints entregues funcionam sem erro;<br>
+  - Resultados não esperados são tratados.<br><br>
+
+  <b>Não-Funcional:</b><br>
+  - Endpoints retornam o objeto corretamente;<br>
+  - Verbos HTTP usados corretamente.<br>
+  - Estrutura e Qualidade do código.<br>
+</p>
+
+
+<p> Lista de endpoints a serem desenvolvidos:
+
+<pre><code>GET /uf
+✓ GET /ufs
+✓ GET /uf/:slug
+
+//endpoint para a entidade: Prêmio
+GET /award/:id
+POST /award
+PUT /award/:id
+DELETE /award/:id
+
+//endpoint para a entidade: Conhecimento
+GET /knowledge/:slug
+POST /knowledge
+PUT /knowledge/:slug
+DELETE /knowledge/:slug
+
+//endpoint para a entidade: Personalidade
+✓ GET /personalities (acrescentar nos resultados os feitos, áreas de conhecimento e premios da personalidade)
+GET /personality/:slug
+✓ POST /personality
+PUT /personality/:slug
+DELETE /personality/:slug
+
+//endpoints adicionais
+✓ GET uf/:slug/personalities
+GET personality/:slug/awards
+GET personality/:slug/achievements
+GET knowledge/:slug/personalities</code></pre>
+</p>
+
+<p>Seguem alguns exemplos de JSON que se espera da API:</p>
+
 <p>
-  <b>Recursos para a Atividade</b>:<br>
+  GET /award/1
+  <pre style="background:rgba(238,238,238,0.92);color:#000">{
+    <span style="color:#093">"statusCode"</span>: <span style="color:#06f">200</span>,
+    <span style="color:#093">"result"</span>: {
+        <span style="color:#093">"id"</span>: <span style="color:#06f">1</span>,
+        <span style="color:#093">"name"</span>: <span style="color:#093">"Ordem das Rosas"</span>,
+        <span style="color:#093">"year"</span>: <span style="color:#06f">1867</span>
+    }
+}</pre>
+</p>
+
+<p>
+  GET /knowledge/1
+  <pre style="background:rgba(238,238,238,0.92);color:#000">{
+    <span style="color:#093">"statusCode"</span>: <span style="color:#06f">200</span>,
+    <span style="color:#093">"result"</span>: {
+        <span style="color:#093">"id"</span>: <span style="color:#06f">1</span>,
+        <span style="color:#093">"area"</span>: <span style="color:#093">"Jornalismo"</span>
+    }
+}</pre>
+</p>
+
+<p>
+  GET /personality/machado-de-assis
+  <pre style="background:rgba(238,238,238,0.92);color:#000">  {
+    <span style="color:#093">"statusCode"</span>: <span style="color:#06f">200</span>,
+    <span style="color:#093">"result"</span>: {
+        <span style="color:#093">"id"</span>: <span style="color:#06f">1</span>,
+        <span style="color:#093">"name"</span>: <span style="color:#093">"Machado de Assis"</span>,
+        <span style="color:#093">"fullName"</span>: <span style="color:#093">"Joaquim Maria Machado de Assis"</span>,
+        <span style="color:#093">"birth"</span>: <span style="color:#093">"21/06/1839"</span>,
+        <span style="color:#093">"cityId"</span>: <span style="color:#06f">6861</span>,
+        <span style="color:#093">"knowledges"</span>: [{
+            <span style="color:#093">"id"</span>: <span style="color:#06f">1</span>,
+            <span style="color:#093">"area"</span>: <span style="color:#093">"Jornalismo"</span>
+        }, {
+            <span style="color:#093">"id"</span>: <span style="color:#06f">2</span>,
+            <span style="color:#093">"area"</span>: <span style="color:#093">"Literatura"</span>
+        }, {
+            <span style="color:#093">"id"</span>: <span style="color:#06f">10</span>,
+            <span style="color:#093">"area"</span>: <span style="color:#093">"Dramaturgia"</span>
+        }],
+        <span style="color:#093">"achievements"</span>: [
+            <span style="color:#093">"Co-fundador da Academia Brasileira de Letras"</span>,
+            <span style="color:#093">"Introduziu o Realismo na Literatura brasileira"</span>
+        ],
+        <span style="color:#093">"awards"</span>: [{
+            <span style="color:#093">"id"</span>: <span style="color:#06f">1</span>,
+            <span style="color:#093">"name"</span>: <span style="color:#093">"Ordem das Rosas"</span>,
+            <span style="color:#093">"year"</span>: <span style="color:#06f">1867</span>
+        }],
+        <span style="color:#093">"photoUrl"</span>: <span style="color:#093">"https://upload.wikimedia.org/wikipedia/commons/3/39/Machado-450.jpg"</span>
+    }
+  }
+</pre>
+</p>
+
+<p> POST /personality
+
+  <pre style="background:rgba(238,238,238,0.92);color:#000">{
+    <span style="color:#093">"slug"</span>: <span style="color:#093">"pixinguinha"</span>,
+    <span style="color:#093">"name"</span>: <span style="color:#093">"Pixinguinha"</span>,
+    <span style="color:#093">"fullName"</span>: <span style="color:#093">"Alfredo da Rocha Vianna Filho"</span>,
+    <span style="color:#093">"birth"</span>: <span style="color:#093">"23/03/1897"</span>,
+    <span style="color:#093">"cityId"</span>: <span style="color:#06f">6861</span>,
+    <span style="color:#093">"knowledges"</span>: [{
+        <span style="color:#093">"id"</span>: <span style="color:#06f">7</span>,
+        <span style="color:#093">"area"</span>: <span style="color:#093">"Música"</span>
+    }],
+    <span style="color:#093">"achievements"</span>: [
+        <span style="color:#093">"considerado um dos maiores compositores da música popular brasileira"</span>
+    ],
+    <span style="color:#093">"awards"</span>: [{
+        <span style="color:#093">"id"</span>: <span style="color:#06f">16</span>,
+        <span style="color:#093">"name"</span>: <span style="color:#093">"Ordem Comendador do Clube de Jazz e Bossa"</span>
+    }, {
+        <span style="color:#093">"id"</span>: <span style="color:#06f">17</span>,
+        <span style="color:#093">"name"</span>: <span style="color:#093">"Diploma da Ordem do Mérito do Trabalho"</span>
+    }],
+    <span style="color:#093">"photoUrl"</span>: <span style="color:#093">"http://tvbrasil.ebc.com.br/sites/_tvbrasil/files/imagens-imce/pixinguinha.jpg"</span>
+}
+</pre>
+</p>
+
+<p>
+  <b>Recursos para a Atividade</b>:<img src="../img/util-updated-mark.png" width="91" height="94" alt="material atualizado" /><br>
   <ul>
     <li><a href="../exemplo/brasucas-database.sql.zip"><img src="../imgs/svgs/fi-download.svg" onerror="this.src='http://findicons.com/files/icons/1156/fugue/16/folder_zipper.png'" width="16" height="16"> Base de Dados</a></li>
     <li><a href="../exemplo/puc-atividade-2.zip"><img src="../imgs/svgs/fi-download.svg" onerror="this.src='http://findicons.com/files/icons/1156/fugue/16/folder_zipper.png'" width="16" height="16"> Projeto Inicial</a></li>
+    <li><a href="../exemplo/brasucas-database.sql.zip"><img src="../imgs/svgs/fi-download.svg" onerror="this.src='http://findicons.com/files/icons/1156/fugue/16/folder_zipper.png'" width="16" height="16"> Coleção Inicial do *Postman</a></li>
   </ul>
 </p>
+
+<p>* Abra o Postman e clique em "Import", escolha o arquivo baixado. As chamadas encontram-se na aba "Collections", ao lado de "History" (Histórico das chamadas).</p>
 
 </div>
