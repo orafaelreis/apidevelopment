@@ -1,0 +1,63 @@
+<!--  introducao-a-arquitetura-orientada-a-servicos -->
+<div class="row column">
+
+    <h2>NodeJS</h2>
+
+    <ul>
+      <li>Nodemon/PM2</li>
+      <li>Projeto Inicial da Atividade #2</li>
+      <li>Arquitetura</li>
+    </ul>
+    <p>Arquitetura Base p/ uma API em Node JS:</p>
+
+    <img src="../img/node-rest-architecture.png" alt="" width="810" />
+
+    <h2>Router</h2>
+
+    <pre><code>app.get('/books?', function(req, res) {
+ res.send('/book ou /books');
+});</code>
+      </pre>
+
+      <pre><code>app.get('/books/:id', function(req, res) {
+   res.send('/book/(\w+)');
+  });</code>
+        </pre>
+
+
+  <pre><code>GET /book/3/49 → req.params = {id: '3'}</code></pre>
+  <pre><code>GET /queries?book=3&quot;title=papeis%20avulsos → req.query = {book: '3', title: 'papeis avulsos'}</code></pre>
+  <br>
+  <p><a href="https://expressjs.com/en/guide/routing.html" target="_blank">Mais exemplos!</a></p>
+
+    <h2>Uso CORS (Cross Origin Resource Share)</h2>
+
+    <p>Lidando com requisição e resposta de origens diferentes!</p>
+    <ul>
+      <li>Client: localhost:80 (ex.: Apache) </li>
+      <li>Server: localhost:3000 (ex.: Express) </li>
+    </ul>
+
+
+    <h2>Lumen</h2>
+
+    <p>micro-Framework (by Laravel) para desenvolvimento de API em PHP: <a href="https://lumen.laravel.com" target="_blank">Lumen</a>
+
+      <li>Composer</li>
+      <li><a href="https://github.com/JuanDMeGon/LumenAPI-Eng" target="_blank">Exemplo de um projeto</a></li>
+      <li>Configurar ambiente: <code>env.example</code></li>
+      <li>Executar <code>php -S 127.0.0.1:8080 -t public/</code></li>
+      <li>Estrutura do Banco de dados: <code>php artisan make:migration</code></li>
+      <li>Populando os Dados: <code>php artisan db:seed</code></li>
+    </p>
+
+    <hr>
+    <h2>Leituras Recomendadas</h2>
+    <ul>
+      <li><a href="https://nodejs.org/dist/latest-v4.x/docs/api/" target="_blank">NodeJS v.4.x Documentation</a></li>
+      <li><a href="http://expressjs.com" target="_blank">Express Documentation</a></li>
+        <li><a href="https://www.linkedin.com/pulse/node-vs-apache-lighttpd-nginx-jeff-poyzner" target="_blank">Node vs Apache vs Lighttpd vs Nginx</a></li>
+        <li><a href="http://expressjs.com" target="_blank">http://swagger.io</a></li>
+        <!-- <li><a href="https://www.codetutorial.io/lumen-first-tutorial/">Lumen, primeiros passos</a></li>  -->
+    </ul>
+</div>
