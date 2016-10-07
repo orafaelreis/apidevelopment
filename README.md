@@ -1,2 +1,2 @@
 # apidevelopment
-A introduction to API development and integration
+An introduction to API development and integration
